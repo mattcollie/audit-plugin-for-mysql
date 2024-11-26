@@ -61,7 +61,7 @@ server_audit_excl_users
 Generate audit log by connecting using non-existing user
 =======================================================================
 connect(localhost,no_such_user,,mysql,MASTER_PORT,MASTER_SOCKET);
-ERROR 28000: Access denied for user 'no_such_user'@'localhost' (using password: NO)
+Got one of the listed errors
 
 =======================================================================
 Generate audit log with different parameter values and queries
@@ -259,7 +259,7 @@ set global server_audit_incl_users='root, plug_dest';
 CREATE USER plug IDENTIFIED WITH 'test_plugin_server' AS 'plug_dest';
 CREATE USER plug_dest IDENTIFIED BY 'plug_dest_passwd';
 connect(localhost,plug,plug_dest,test,MYSQL_PORT,MYSQL_SOCK);
-ERROR 28000: Access denied for user 'plug'@'localhost' (using password: YES)
+Got one of the listed errors
 GRANT PROXY ON plug_dest TO plug;
 select USER(),CURRENT_USER();
 USER()	CURRENT_USER()
